@@ -1,15 +1,59 @@
-html
-title hiya
-h2 new line
-div a second line
-p a third line
-form(action="", method="get") 
-h2 title of form 
-input(type="text", value="")
-br
-br
-div 
-a(href="/about")
-  p click me 
-br
-input(type = "text", placeholder = 'enter email')
+html(lang ='en')
+    head 
+        title Include in Pug
+    body     
+   
+       nav 
+            span 
+            a(href="about") About
+            span 
+            a(href="/") Home
+
+
+
+-
+  const sampleData = [
+    {
+      'title': 'Your Next Adventure',
+      
+      'subtitle': 'This is the subtitle',
+      
+      'description': 'Topping sesame snaps sweet roll gingerbread jelly-o. Tootsie roll fruitcake gummies sugar plum topping. Cookie cookie jelly bonbon bonbon croissant cheesecake liquorice gingerbre bonbon topping candy canes topping soufflé marshmallow. Bonbon cotton candy brownie sweet roll jelly beans shortbread. Lollipop brownie pastry cheesecake macaroon.',
+
+      'imgSrc': 'https://i.ibb.co/ySR0LhR/grid.png'
+    }]
+
+
+
+
+div
+  each items in sampleData
+        img(src=items.imgSrc alt='grid image')
+        figcaption
+          h1 A JOURNEY FORWARD
+       
+          h2 #{items.title} 
+          h3 #{items.subtitle}
+          p #{items.description}
+
+
+
+div.text-center
+        form(class="form-signin" method="POST" action="/users/login")
+            #error
+                if error
+                    p.text-danger Error!!!
+
+            h3 Create An Account
+            label(for="email" ) Email:
+            br
+            input(type="email" name="username" id="email-id" placeholder="Email address" required autofocus)
+            br
+            br
+            label(for="password" ) Password: 
+            br
+            input(type="password" name="password" id="password-id"  placeholder="*****" required)
+            br
+            button(type="submit") Sign in
+
+
